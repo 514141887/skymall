@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.2.RELEASE</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.hecheng</groupId>
+    <artifactId>skymall</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>skymall</name>
+    <description>Demo project for Spring Boot</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>skymall-common</module>
+        <module>skymall-eureka</module>
+        <module>skymall-config</module>
+        <module>skymall-management</module>
+        <module>skymall-web</module>
+        <module>skymall-zuul</module>
+        <module>skymall-batch</module>
+        <module>skymall-pay</module>
+        <module>skymall-search</module>
+        <module>skymall-order</module>
+    </modules>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <cloud.version>Dalston.RC1</cloud.version>
+    </properties>
+
+
+
+</project>
