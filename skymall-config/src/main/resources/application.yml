@@ -5,8 +5,10 @@ spring:
     config:
       server:
         git:
-          uri:
+          uri: https://github.com/514141887/skymall.git
+          username: 514141887@qq.com
+          password: hc514141887
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:7070/eureka/
+      defaultZone: http://127.0.0.1:8761/eureka/
