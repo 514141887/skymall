@@ -1,0 +1,159 @@
+# mysql读写分离，write写库、read读库，写库仅有一个，做集群，读库可有多个，做分布式
+datasource:
+  readSize: 2
+  type: com.alibaba.druid.pool.DruidDataSource
+  write:
+    name: write
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: root
+    password: root
+    driver-class-name: oracle.jdbc.OracleDriver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  read1:
+    name: read1
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: root
+    password: root
+    driver-class-name: oracle.jdbc.OracleDriver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  read2:
+    name: read2
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: root
+    password: root
+    driver-class-name: oracle.jdbc.OracleDriver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+# 上传文件或图片地址
+system: 
+  upload: 
+    path: /static/system/file/
+
+
+#txmanager管理
+tm: 
+  manager:  
+    url:  http://127.0.0.1:8899/tx/manager/
+
+# 负载均衡
+BANK:  #这是ribbon要请求的serviceID
+  ribbon:
+    listOfServers: http://localhost:8081
+    
+office:  #这是ribbon要请求的serviceID
+  ribbon:
+    listOfServers: http://localhost:8082
+    
+order:  #这是ribbon要请求的serviceID
+  ribbon:
+    listOfServers: http://localhost:8083
+    
+other:  #这是ribbon要请求的serviceID
+  ribbon:
+    listOfServers: http://localhost:8084
+    
+statement:  #这是ribbon要请求的serviceID
+  ribbon:
+    listOfServers: http://localhost:8085
+    
+statistical:  #这是ribbon要请求的serviceID
+  ribbon:
+    listOfServers: http://localhost:8086
+
+# redis单服务器配置  
+spring:
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 12345
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+    timeout: 0
+  data: 
+    solr: 
+      host: http://127.0.0.1:9999/solr
+
+# redis集群服务器配置
+#spring:
+#  redis:
+#    cluster:
+#      nodes:
+#        - 192.168.31.33:7000
+#        - 192.168.31.33:7001
+#        - 192.168.31.33:7002
+#        - 192.168.31.33:7003
+#        - 192.168.31.33:7004
+#        - 192.168.31.33:7005
+#        - 192.168.31.33:7006
+#        - 192.168.31.33:7007
+#        - 192.168.31.33:7008
+#        - 192.168.31.33:7009
+#        - 192.168.31.33:7010
+#        - 192.168.31.140:8000
+#        - 192.168.31.140:8001
+#        - 192.168.31.140:8002
+#        - 192.168.31.140:8003
+#        - 192.168.31.140:8004
+#        - 192.168.31.140:8005
+#        - 192.168.31.140:8006
+#        - 192.168.31.140:8007
+#        - 192.168.31.140:8008
+#        - 192.168.31.140:8009
+#        - 192.168.31.140:8010
+#        - 192.168.31.6:9000
+#        - 192.168.31.6:9001
+#        - 192.168.31.6:9002
+#        - 192.168.31.6:9003
+#        - 192.168.31.6:9004
+#        - 192.168.31.6:9005
+#        - 192.168.31.6:9006
+#        - 192.168.31.6:9007
+#        - 192.168.31.6:9008
+#        - 192.168.31.6:9009
+#        - 192.168.31.6:9010
+#  data: 
+#    solr: 
+#      host: http://127.0.0.1:9999/solr

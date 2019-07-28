@@ -1,0 +1,95 @@
+# mysql读写分离，write写库、read读库，写库仅有一个，做集群，读库可有多个，做分布式
+datasource:
+  readSize: 2
+  type: com.alibaba.druid.pool.DruidDataSource
+  write:
+    name: write
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: root
+    password: root
+    driver-class-name: oracle.jdbc.OracleDriver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  read1:
+    name: read1
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: root
+    password: root
+    driver-class-name: oracle.jdbc.OracleDriver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  read2:
+    name: read2
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: root
+    password: root
+    driver-class-name: oracle.jdbc.OracleDriver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    
+server: 
+  port: 8081    
+    
+system: 
+  upload: 
+    path: /static/meeting/file/
+
+#txmanager管理
+tm: 
+  manager:  
+    url:  http://127.0.0.1:8899/tx/manager/
+
+# redis单服务器配置  
+spring:
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 12345
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+    timeout: 0
+
+# 负载均衡
+API-GATEWAY:  #这是ribbon要请求的serviceID
+  ribbon:
+    listOfServers: http://localhost:8080

@@ -1,0 +1,132 @@
+# mybatis配置mapper
+mybatis:
+    type-aliases-package: com.topcheer.entity
+    mapper-locations: classpath*:sqlmap/*Mapper.xml
+    configuration:
+        mapUnderscoreToCamelCase: true
+        useColumnLabel : true
+        useGeneratedKeys: true
+
+# zuul路由 
+zuul:
+  routes:
+    bank:
+      path: /bank/**
+      serviceId: BANK
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+    office:
+      path: /office/**
+      serviceId: office
+    order:
+      path: /order/**
+      serviceId: order
+    other:
+      path: /other/**
+      serviceId: other
+    statement:
+      path: /statement/**
+      serviceId: statement
+    statistical:
+      path: /statistical/**
+      serviceId: statistical
+  host:
+    connect-timeout-millis: 60000
+  add-host-header: true
+  sensitiveHeaders:    #过滤头
+
+# jwt配置可无视权限路径
+jwt:
+  antUrls: /login/**,/register/**,/oauth/*,/**/swagger*,/**/v2/*,/**/configuration/*,/user/sendConfirmEmail/*,/user/resetPassword,/bus/refresh
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  route:
+    authentication:
+      login: /login
+      refresh: /refresh
+      logout: /logout
+
+# 国际化
+spring: 
+  messages: 
+    basename: i18n/messages   
+# JACKSON
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+# 上传限制
+  http: 
+     multipart:
+      maxFileSize: 100Mb  
+      maxRequestSize: 100Mb
+# 上传后可查看配置
+  mvc:
+    static-path-pattern:  /**
+  resources:  
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${system.upload.path}  
+# 无视thymeleaf缓存
+  thymeleaf:  
+    cache:  false
+  task:
+    pool:
+      corePoolSize : 4        #线程池维护线程的最少数量
+      maxPoolSize : 8         #线程池维护线程的最大数量
+      keepAliveSeconds : 60   #线程池维护线程所允许的空闲时间
+      queueCapacity : 20      #线程池所使用的缓冲队列
+  zipkin:
+    base-url: http://localhost:7071
+    
+# rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+# 刷新时，关闭安全验证
+management: 
+  security: 
+    enabled:  false
+ 
+# 配置负载均衡
+ribbon:
+  eureka:
+    enabled: false
+  # 负载均衡策略
+  NFLoadBalancerRuleClassName:  com.netflix.loadbalancer.RandomRule
+  # 分布式事务必须配置项
+  MaxAutoRetriesNextServer: 0
+  
+# hystrix超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+# swagger2配置
+controller: 
+  package: com.topcheer.controller
+  title: topcheer接口测试系统
+  description:  
+  version:  1.0
+  
+# feign打开hystrix配置
+feign:  
+  hystrix:  
+    enabled: true
+  httpclient: 
+    enabled: true
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry:  true
+
+solr:
+  dao:  com.topcheer.solr.dao
+  
+  
+bus: bus2

@@ -10,7 +10,7 @@
     <groupId>com.hecheng</groupId>
     <artifactId>skymallorder</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>skymallOrder</name>
+    <name>skymall-order</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

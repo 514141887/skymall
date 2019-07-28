@@ -11,7 +11,7 @@
     <groupId>com.hecheng</groupId>
     <artifactId>skymall-pay</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>skymallPay</name>
+    <name>skymall-pay</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
