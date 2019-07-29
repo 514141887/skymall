@@ -5,4 +5,7 @@ spring:
     config:
       profile: dev
       label: master
-      uri: http://127.0.0.1:7072/
+      uri: http://127.0.0.1:7070/
+      discovery:
+        enabled: true
+        service-id: SKYMALL-CONFIG

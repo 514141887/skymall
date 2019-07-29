@@ -10,7 +10,7 @@ spring:
 
 #mybatis
 mybatis:
-  type-aliases-package: com.topcheer.entity
+  type-aliases-package: com.hecheng.skymallweb.entity
   mapper-locations: classpath*:mapper/*Mapper.xml
   configuration:
     mapUnderscoreToCamelCase: true

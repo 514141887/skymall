@@ -1,14 +1,17 @@
 spring:
   application:
+
     name: skymall-config
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/514141887/skymall.git
+          uri: https://github.com/514141887/config.git
           username: 514141887@qq.com
           password: hc514141887
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka/
+server:
+  port: 7070
