@@ -88,6 +88,7 @@ public class DateUtils {
 	 * @author Jonathan
 	 */
 	public static String formate(Date date, String formate) {
+
 		if (date == null)
 			return null;
 		SimpleDateFormat simpleDateFormat = formats.get(formate);
@@ -119,6 +120,7 @@ public class DateUtils {
 	 * @author Jonathan
 	 */
 	public static String formateCurrent(String formate) {
+
 		SimpleDateFormat simpleDateFormat = formats.get(formate);
 		return simpleDateFormat.format(new Date());
 	}

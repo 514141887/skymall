@@ -1,11 +1,14 @@
 package com.hecheng.entity.resp;
 
+import com.sun.xml.internal.xsom.impl.scd.Iterators;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
 public class GroupInfoResp implements Serializable{
+
+
 	
     /**
 	 * 

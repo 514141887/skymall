@@ -29,6 +29,7 @@
         <module>skymall-pay</module>
         <module>skymall-search</module>
         <module>skymall-order</module>
+        <module>skymall-mbg</module>
     </modules>
 
 
